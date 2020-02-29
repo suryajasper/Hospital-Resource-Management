@@ -13,13 +13,22 @@ function createRoom() {
   legend.classList.add('ignore-css');
 
   var legendHeader = document.createElement('h3');
-  legendHeader.innerHTML = "Enter roon name";
-  
+  legendHeader.innerHTML = "Enter room name";
+
   var legendIn = document.createElement('input');
   legendIn.type = "text";
 
+  var googleMap = document.createElement('div');
+
+  map = new google.maps.Map(googleMap, {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+  });
+
+  legend.appendChild(legendHeader);
   legend.appendChild(legendIn);
   fieldset.appendChild(legend);
+  fieldset.appendChild(googleMap);
   parent.appendChild(br);
   parent.appendChild(fieldset);
 }
