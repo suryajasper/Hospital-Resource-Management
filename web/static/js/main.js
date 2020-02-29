@@ -36,10 +36,19 @@ function createRoom() {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
+  var createBut = createButton("Add Room");
+  createBut.onclick = function() {
+    var nameh3 = document.createElement('h3');
+    legendHeader.innerHTML = legendIn.value;
+    legendIn.remove();
+    createBut.remove();
+  };
+
   legend.appendChild(legendHeader);
   legend.appendChild(legendIn);
   fieldset.appendChild(legend);
   fieldset.appendChild(googleMap);
+  fieldset.appendChild(createBut);
   parent.appendChild(br);
   parent.appendChild(fieldset);
 }

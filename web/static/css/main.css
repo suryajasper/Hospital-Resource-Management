@@ -28,9 +28,6 @@ select:focus {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.tab-2{
-	display:inline-block; width:TWO-TAB-WIDTH;
-}
 .center-div {
   display: inline-block;
   background-color:#f2f3f5;

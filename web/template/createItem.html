@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="../static/css/main.css">
   <link rel="stylesheet" href="../static/css/mainMain.css">
 </head>
-<body>
+<body onload = "initialize()">
   <div class="center-outside">
     <div class="center-div">
       <label for = "nameIn">Name of Item: </label>
@@ -25,10 +25,17 @@
         <option value="Drug">Drug</option>
         <option value="Surgery">Surgical Instrument</option>
       </select>
-      <label for = "room">Type of item: </label>
-      <select name="room" autocomplete="off" required>
+      <br><br>
+      <label for = "room">Room: </label>
+      <select id = "rooms" name="room" autocomplete="off" required>
 
       </select>
+      <br><br>
+      <label for = "qty">Quantity of Item: </label>
+      <input name = "qty" style = "width: 300" type = "number" placeholder="Enter the quantity of item"></input>
+      <br><br>
+
+      <button id = "create">Add item</button>
     </div>
   </div>
   <script src = "../static/js/Item.js"></script>

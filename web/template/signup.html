@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Signup</title>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/mainMain.css">
+  </head>
+  <body>
+    <div class="center-outside">
+      <div class="center-div">
+          Username<br>
+          <input type="text" name="user" autocomplete="off" required><br>
+          Password<br>
+          <input type="password" name="pass" autocomplete="off" pattern=".{6,}" placeholder="Must be 6+ characters" required><br>
+          Gender<br>
+          <select name="gender" autocomplete="off" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="male">Other</option>
+          </select>
+          Role<br>
+          <select name="role" autocomplete="off" required>
+            <option value="nurse">Nurse</option>
+            <option value="surgeon">Surgeon</option>
+            <option value="doctor">Doctor</option>
+          </select>
+          <br>
+          Access Code
+          <br>
+            <input type="text" name="access" autocomplete="off" required>
+          <br>
+          Age<br>
+          <input type="number" name="age" autocomplete="off" min="0" step="1" required>
+          <br><br>
+          <input type="submit" value="Submit">
+      </div>
+    </div>
+    <script src="../static/js/signUp.js"></script>
+  </body>
+</html>
