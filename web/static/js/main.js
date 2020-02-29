@@ -16,7 +16,9 @@ function createItem() {
   window.location = '../template/createItem.html?rooms='+roomRaw;
 }
 
-function createRoom() {
+function createRoom(roomName) {
+  var isEditable = roomName == null;
+
   var fieldset = document.createElement('fieldset');
   var legend = document.createElement('legend');
   var br = document.createElement('br');
@@ -37,12 +39,19 @@ function createRoom() {
   });
 
   var createBut = createButton("Add Room");
-  createBut.onclick = function() {
+
+  var createEverything = function() {
     var nameh3 = document.createElement('h3');
     legendHeader.innerHTML = legendIn.value;
     legendIn.remove();
     createBut.remove();
-  };
+  }
+
+  createBut.onclick = createEverything;
+
+  if (!isEditable) {
+    createEverything();
+  }
 
   legend.appendChild(legendHeader);
   legend.appendChild(legendIn);
