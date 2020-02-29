@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>Add Item</title>
+  <meta charset = "utf-8"></meta>
+  <script src="https://www.google.com/jsapi"></script>
+  <link rel="stylesheet" href="../static/css/main.css">
+  <link rel="stylesheet" href="../static/css/mainMain.css">
+</head>
+<body>
+  <div class="center-outside">
+    <div class="center-div">
+      <label for = "nameIn">Name of Item: </label>
+      <input name = "nameIn" type = "text" placeholder="Enter name of item"></input>
+      <br><br>
+      <style>
+        label {
+          display: inline-block;
+        }
+        select {
+          display: inline-block;
+        }
+      </style>
+      <label for = "type">Type of item: </label>
+      <select name="type" autocomplete="off" required>
+        <option value="Drug">Drug</option>
+        <option value="Surgery">Surgical Instrument</option>
+      </select>
+      <label for = "room">Type of item: </label>
+      <select name="room" autocomplete="off" required>
+
+      </select>
+    </div>
+  </div>
+  <script src = "../static/js/Item.js"></script>
+  <script src = "../static/js/Room.js"></script>
+  <script src = "../static/js/newItem.js"></script>
+</body>
+</html>

@@ -4,11 +4,6 @@ class Room {
     this.gps = gps;
     this.items = items;
   }
-  constructor(roomName, gps) {
-    this.roomName = roomName;
-    this.gps = gps;
-    this.items = [];
-  }
   addItem(item) {
     this.items.push(item);
   }

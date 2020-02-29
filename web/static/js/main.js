@@ -1,9 +1,19 @@
 var parent = document.getElementById('parent');
 
+var rooms = ["room1", "room2", "room3"];
+
 function createButton(text) {
   var button = document.createElement("button");
   button.innerHTML = text;
   return button;
+}
+
+function createItem() {
+  var roomRaw = "";
+  for (var i = 0; i < rooms.length; i++) {
+    roomRaw += rooms[i] + "+";
+  }
+  window.location = '../template/createItem.html?rooms='+roomRaw;
 }
 
 function createRoom() {
@@ -22,7 +32,8 @@ function createRoom() {
 
   map = new google.maps.Map(googleMap, {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 8
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
   legend.appendChild(legendHeader);

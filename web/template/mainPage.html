@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>Resources</title>
+  <meta charset = "utf-8"></meta>
+  <script src="https://www.google.com/jsapi"></script>
+  <link rel="stylesheet" href="../static/css/main.css">
+  <link rel="stylesheet" href="../static/css/mainMain.css">
+</head>
+<body>
+  <br>
+  <div class = "header">
+    <div class = "center">
+      <div class="dropdown">
+          <button class="dropbtn">Add new</button>
+          <div class="dropdown-content">
+            <a onclick = "createItem()">Medicine</a>
+            <a onclick = "createItem()">Surgical instrument</a>
+            <a onclick = "createRoom()">Storage Facility</a>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div id = "parent">
+
+  </div>
+  <script src = "../static/js/Item.js"></script>
+  <script src = "../static/js/Room.js"></script>
+  <script src= "https://maps.googleapis.com/maps/api/js?key=AIzaSyBeh9ywi_A-4UvgmaJKB3mqSpTsIn9gZkA&callback=initMap" async defer></script>
+  <script src = "../static/js/main.js"></script>
+</body>
+</html>

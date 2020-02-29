@@ -1,7 +1,22 @@
+select {
+  background-color:#e3e5e8;
+  border: 2px solid #e3e5e8;
+  border-radius: 4px;
+  padding: 12px 20px;
+  font-size:14px;
+}
+
+select:focus {
+  outline: none;
+}
+
 .center {
   margin: auto;
   text-align: center;
   display: inline-block;
+}
+.center-outside {
+  text-align: center;
 }
 .right-align {
   float: right;
@@ -93,4 +108,8 @@ a {
 .ignore-css
 {
     all:unset;
+}
+#map {
+  height: 100;
+  width: 100;
 }
