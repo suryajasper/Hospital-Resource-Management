@@ -3,14 +3,16 @@
   <title>Add Item</title>
   <meta charset = "utf-8"></meta>
   <script src="https://www.google.com/jsapi"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="../static/css/main.css">
   <link rel="stylesheet" href="../static/css/mainMain.css">
 </head>
 <body onload = "initialize()">
-  <div class="center-outside">
-    <div class="center-div">
+  <div class="center-outside" style = "width: 100%;">
+    <div class="center-div" style = "width: 100%;">
       <label for = "nameIn">Name of Item: </label>
-      <input name = "nameIn" type = "text" placeholder="Enter name of item"></input>
+      <input id = "nameIn" name = "nameIn" type = "text" placeholder="Enter name of item"></input>
       <br><br>
       <style>
         label {
@@ -35,7 +37,10 @@
       <input name = "qty" style = "width: 300" type = "number" placeholder="Enter the quantity of item"></input>
       <br><br>
 
-      <button id = "create">Add item</button>
+      <button id = "create" onclick = "getDrugInfo(document.getElementById('nameIn').value)">Add item</button>
+    </div>
+    <div class = "detailParent" style = "text-align: left;" id = "parent">
+
     </div>
   </div>
   <script src = "../static/js/Item.js"></script>

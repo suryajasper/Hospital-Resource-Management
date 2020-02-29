@@ -9,6 +9,9 @@ select {
 select:focus {
   outline: none;
 }
+.detailParent h4 {
+  color: rgb(190, 74, 0);
+}
 
 .center {
   margin: auto;
