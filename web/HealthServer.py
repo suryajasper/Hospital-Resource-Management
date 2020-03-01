@@ -34,28 +34,32 @@ def login():
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
    if request.method == 'POST':
-      print("hello")
-      ilist = [request.form['pass'], request.form['gender'], request.form['age'], request.form['role'], request.form['acccode']]
+      ilist = [request.form['pass'], request.form['gender'], request.form['age'], request.form['role'], request.form['access']]
+      print(ilist)
       usr_db.add_user(request.form['user'], ilist)
       return (redirect(url_for('login')))
    else:
       return render_template(SIGNUP)
 
-@app.route('/mainPage')
+@app.route('/mainPage', methods=['POST', 'GET'])
 def mainPage():
-   return render_template(INDEX)
+   if request.method == 'POST':
+   else:
+      return render_template(INDEX)
 
-@app.route('/createItem')
-def graphs():
-   return render_template(CREATEITEM)
-
-@app.route('/rooms')
-def room():
-   usr_db.add_room(request.json)
-
-@app.route('/items')
+@app.route('/items', methods=['POST', 'GET'])
 def items():
-   usr_db.createItem(request.json)
+   if request.method == 'POST':
+      usr_db.createItem(request.json)
+   else:
+      return render_template(CREATEITEM)
+
+@app.route('/rooms', methods=['POST', 'GET'])
+def room():
+   if request.method == 'POST':
+      usr_db.add_room(request.json)
+   else:
+      return render_template(CREATEITEM)
 
 if __name__ == '__main__':
    initialize_vars()

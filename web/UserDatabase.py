@@ -24,7 +24,7 @@ class UserDatabase:
 			usr += ' ' + i
 		f.write(usr + '\n')
 		f.close()
-		f = open(usr + 'eat.db' 'w')
+		f = open(usr + 'eat.db', 'w')
 		f.close()
 		return True
 
