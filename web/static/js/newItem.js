@@ -16,7 +16,6 @@ function sendToServer(item) {
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "/createItem", true);
   xhttp.send(JSON.stringify(newItem));
-  window.location = "/mainPage"
 }
 
 async function getDrugInfo(drugName) {
