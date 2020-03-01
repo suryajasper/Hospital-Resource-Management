@@ -50,11 +50,11 @@ def graphs():
    return render_template(CREATEITEM)
 
 @app.route('/rooms')
-def room:
+def room():
    usr_db.add_room(request.json)
 
 @app.route('/items')
-def items:
+def items():
    usr_db.createItem(request.json)
 
 if __name__ == '__main__':
