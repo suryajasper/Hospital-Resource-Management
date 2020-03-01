@@ -23,7 +23,7 @@
         }
       </style>
       <label for = "type">Type of item: </label>
-      <select name="type" autocomplete="off" required>
+      <select id = "type" name="type" autocomplete="off" required>
         <option value="Drug">Drug</option>
         <option value="Surgery">Surgical Instrument</option>
       </select>
@@ -37,7 +37,7 @@
       <input name = "qty" style = "width: 300" type = "number" placeholder="Enter the quantity of item"></input>
       <br><br>
 
-      <button id = "create" onclick = "getDrugInfo(document.getElementById('nameIn').value)">Add item</button>
+      <button id = "create" onclick = "addItemToScreen()">Add item</button>
     </div>
     <div class = "detailParent" style = "text-align: left;" id = "parent">
 

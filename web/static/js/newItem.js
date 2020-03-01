@@ -1,6 +1,16 @@
 var select = document.getElementById('rooms');
+var itemSelect = document.getElementById('type');
+var qty = document.getElementById('qty');
+
 var parent = document.getElementById('parent');
 parent.classList.add('ignore-css');
+
+function sendToServer(item) {
+  var newItem = new Item(item, parseInt(qty.value), itemSelect.value, select.value);
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/items", true);
+  xhttp.send(JSON.stringify(newItem));
+}
 
 async function getDrugInfo(drugName) {
   var axiosToSend = 'https://api.fda.gov/drug/ndc.json?search=generic_name:"' + drugName + '"&limit=100';
@@ -32,6 +42,15 @@ function createList(stuff) {
   return ul;
 }
 
+function addItemToScreen() {
+  if (itemSelect.value === "Drug") {
+    getDrugInfo(document.getElementById('nameIn').value);
+  }
+  else {
+    sendToServer(document.getElementById('nameIn').value);
+  }
+}
+
 function addDrugToScreen(drug) {
   var fieldset = document.createElement('fieldset');
   fieldset.style.width = "80%";
@@ -57,6 +76,7 @@ function addDrugToScreen(drug) {
   var buttonToCreate = document.createElement('button');
   buttonToCreate.innerHTML = "Add";
   buttonToCreate.onclick = function() {
+    sendToServer(drug.generic_name);
     window.location = "../template/mainPage.html";
   }
 
