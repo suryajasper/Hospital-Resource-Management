@@ -18,7 +18,7 @@ function createItem() {
 
 function sendToServer(room) {
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "/items", true);
+  xhttp.open("POST", "/rooms", true);
   xhttp.send(JSON.stringify(room));
 }
 
