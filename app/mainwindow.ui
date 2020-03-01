@@ -6,16 +6,98 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>751</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>-1</x>
+      <y>0</y>
+      <width>751</width>
+      <height>451</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QStackedWidget" name="stackedWidget">
+       <widget class="QWidget" name="page">
+        <widget class="QLabel" name="label">
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>40</y>
+           <width>201</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>24</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Enter A Room</string>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="comboBox">
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>120</y>
+           <width>271</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton">
+         <property name="geometry">
+          <rect>
+           <x>290</x>
+           <y>280</y>
+           <width>80</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>OK</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="page_2"/>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>751</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHello">
+    <property name="title">
+     <string>Medicine</string>
+    </property>
+    <addaction name="actionCheckout_Medicine"/>
+   </widget>
+   <addaction name="menuHello"/>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCheckout_Medicine">
+   <property name="text">
+    <string>Checkout Medicine</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
