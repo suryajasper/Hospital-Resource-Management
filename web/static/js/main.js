@@ -33,7 +33,7 @@ function createItem() {
   for (var i = 0; i < rooms.length; i++) {
     roomRaw += rooms[i] + "+";
   }
-  window.location = '../templates/createItem.html?rooms='+roomRaw;
+  window.location = '/createItem?rooms='+roomRaw;
 }
 
 function sendToServer(room) {
@@ -83,7 +83,7 @@ function createRoom(roomName, items) {
   var map = new google.maps.Map(googleMap, {zoom: 4, center: uluru});
   // The marker, positioned at Uluru
   var marker = new google.maps.Marker({position: uluru, map: map});
-  var drawingManager = new google.maps.drawing.DrawingManager({map: map});
+  var drawingManager = new google.maps.drawin.DrawingManager({map: map});
 
   var createBut = createButton("Add Room");
 
