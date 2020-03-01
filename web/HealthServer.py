@@ -60,7 +60,7 @@ def mainPage():
 @app.route('/rooms', methods=['GET'])
 def getRooms():
    usr_db.getRooms()
-   return(jsonfiy(usr_db.getRooms()))
+   return(jsonify(usr_db.getRooms()))
 
 if __name__ == '__main__':
    initialize_vars()
