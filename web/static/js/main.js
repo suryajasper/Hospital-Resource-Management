@@ -76,12 +76,14 @@ function createRoom(roomName, items) {
   legendIn.type = "text";
 
   var googleMap = document.createElement('div');
+  googleMap.classList.add('map');
 
-  map = new google.maps.Map(googleMap, {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 12,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(googleMap, {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+  var drawingManager = new google.maps.drawing.DrawingManager({map: map});
 
   var createBut = createButton("Add Room");
 
