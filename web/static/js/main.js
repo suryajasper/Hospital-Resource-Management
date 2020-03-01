@@ -78,7 +78,7 @@ function createRoom(roomName, items) {
   var googleMap = document.createElement('div');
   googleMap.classList.add('map');
 
-  var uluru = {lat: -25.344, lng: 131.036};
+  var uluru = {lat: 37.3688, lng: -122.0802};
   // The map, centered at Uluru
   var map = new google.maps.Map(googleMap, {zoom: 4, center: uluru});
   // The marker, positioned at Uluru
