@@ -25,12 +25,23 @@ class UserDatabase:
 			usr += ' ' + i
 		f.write(usr + '\n')
 		f.close()
-		f = open(usr + 'eat.db', 'w')
-		f.close()
 		return True
 
-	def get_rooms():
-		f = open()
+	def getRooms(self):
+		jso = []
+		for file in os.listdir("/"):
+			if file.endswith(".db"):
+				if not file.startswith("usrdata"):
+					f = open(file, 'r')
+					data = f.readlines()
+					f.close()
+					curr = {gps: data[0]}
+					items = []
+					for i in data[1:]:
+						items.append(makeItemJson(i))
+					curr['items'] = items
+					jso.append(curr)
+		return(jso)
 
 	def add_room(self, jso):
 		print('adding a room')
