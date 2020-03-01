@@ -17,10 +17,6 @@ def initialize_vars():
 def frontPage():
    return (redirect(url_for('login')))
 
-@app.route('/mainPage', methods=['POST', 'GET'])
-def mainPage():
-   return render_template(INDEX)
-
 @app.route('/login', methods=['POST', 'GET'])
 def login():
    if request.method == 'POST':
@@ -54,11 +50,12 @@ def items():
       return render_template(CREATEITEM)
 
 @app.route('/mainPage', methods=['POST', 'GET'])
-def room():
+def mainPage():
    if request.method == 'POST':
-      usr_db.add_room(request.json)
-   else:
-      return render_template(INDEX)
+      print("primary post");
+      print(request.get_json(force=True))
+      usr_db.add_room(request.get_json(force=True))
+   return render_template(INDEX)
 
 if __name__ == '__main__':
    initialize_vars()

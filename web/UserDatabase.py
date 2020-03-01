@@ -29,6 +29,9 @@ class UserDatabase:
 		f.close()
 		return True
 
+	def get_rooms():
+		f = open()
+
 	def add_room(self, jso):
 		print('adding a room')
 		f = open(jso["roomName"] + '.db', 'w')
@@ -42,6 +45,7 @@ class UserDatabase:
 		print(strng)
 		f.write(strng)
 		f.close()
+		return True
 
 	def createItem(self, jso):
 		f = open(jso["room"] + '.db', 'a')

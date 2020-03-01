@@ -37,6 +37,7 @@ function createItem() {
 }
 
 function sendToServer(room) {
+  console.log(room);
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "/mainPage", true);
   xhttp.send(JSON.stringify(room));
@@ -85,7 +86,7 @@ function createRoom(roomName, items) {
   var createBut = createButton("Add Room");
 
   var createEverything = function() {
-    var newRoom = new Room(legendIn.value, null, []);
+    var newRoom = new Room(legendIn.value, "3, 3, 3", []);
     if (roomName == null) {
       rooms.push(legendIn.value);
     }
