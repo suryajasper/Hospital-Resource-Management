@@ -5,6 +5,7 @@ from os import path
 class UserDatabase:
 	def __init__(self):
 		self.ufile = 'usrdata.db'
+		self.ACCESS_CODE = ["fgf76"]
 
 	def login(self,usr, pss):
 		f = open(self.ufile, 'r')
@@ -28,44 +29,25 @@ class UserDatabase:
 		f.close()
 		return True
 
-	def log_food(self, usr, jso):
-		f =	open(usr + 'eat.db', 'a')	
-		f.write(json.dumps(jso) + '\n')
+	def add_room(self, jso):
+		print('adding a room')
+		f = open(jso["roomName"] + '.db', 'w')
+		strng = ""
+		strng += jso["gps"] + '\n'
+		for i in jso['items']:
+			s = ""
+			for j in i:
+				s += i[j] + ' '
+			strng += s + '\n'
+		print(strng)
+		f.write(strng)
 		f.close()
 
-	def get_eat_history(self, usr):
-		f = open(usr + 'eat.db', 'r')
-		data = f.readlines()
+	def createItem(self, jso):
+		f = open(jso["room"] + '.db', 'a')
+		strng = ""
+		for i in jso:
+			strng += i[j] + ' '
+		strng += s + '\n'
+		f.write(strng)
 		f.close()
-
-		foodList = []
-		if len(data) >= 30:
-			rang = 30
-		else:
-			rang = len(data)
-
-		for i in range(len(data)- 1, len(data) - rang, -1):
-			foodList.append(json.loads(data[i]))
-
-		print(foodList)
-		return(foodList)
-
-	def set_usr_prefs(self, usr, prefs):
-		print('ssdfsdf')
-		f = open(usr + '.prefs', 'w')
-		f.write(json.dumps(prefs))
-		f.close()
-
-	def check_is_prefs_set(self, usr):
-		if (path.exists(usr + '.prefs')):
-			return True
-		else:
-			return False
-
-	def get_usr_prefs(self, usr):
-		f = open(usr + '.prefs', 'wr')
-		data = f.readlines()
-		f.close()
-
-		return (json.loads(data[0]))
- 

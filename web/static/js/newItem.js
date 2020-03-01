@@ -8,7 +8,7 @@ parent.classList.add('ignore-css');
 function sendToServer(item) {
   var newItem = new Item(item, parseInt(qty.value), itemSelect.value, select.value);
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "/items", true);
+  xhttp.open("POST", "/createItem", true);
   xhttp.send(JSON.stringify(newItem));
 }
 

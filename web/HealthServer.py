@@ -17,11 +17,16 @@ def initialize_vars():
 def frontPage():
    return (redirect(url_for('login')))
 
+@app.route('/mainPage', methods=['POST', 'GET'])
+def mainPage():
+   return render_template(INDEX)
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
    if request.method == 'POST':
       if (usr_db.login(request.form['user'], request.form['pass'])):
          usr = request.form['user']
+         print('should be directing to main page')
          resp = redirect(url_for('mainPage'))
          resp.set_cookie('user', request.form['user'])
          resp.set_cookie('pass', request.form['pass'])
@@ -41,25 +46,19 @@ def signup():
    else:
       return render_template(SIGNUP)
 
-@app.route('/mainPage', methods=['POST', 'GET'])
-def mainPage():
-   if request.method == 'POST':
-   else:
-      return render_template(INDEX)
-
-@app.route('/items', methods=['POST', 'GET'])
+@app.route('/createItem', methods=['POST', 'GET'])
 def items():
    if request.method == 'POST':
       usr_db.createItem(request.json)
    else:
       return render_template(CREATEITEM)
 
-@app.route('/rooms', methods=['POST', 'GET'])
+@app.route('/mainPage', methods=['POST', 'GET'])
 def room():
    if request.method == 'POST':
       usr_db.add_room(request.json)
    else:
-      return render_template(CREATEITEM)
+      return render_template(INDEX)
 
 if __name__ == '__main__':
    initialize_vars()

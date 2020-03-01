@@ -1,11 +1,31 @@
 var parent = document.getElementById('parent');
 
-var rooms = ["room1", "room2", "room3"];
+var rooms = [];
+
+getFromServer();
 
 function createButton(text) {
   var button = document.createElement("button");
   button.innerHTML = text;
   return button;
+}
+
+function getFromServer() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "/mainPage", true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState>3 && xhttp.status==200) {
+      console.log(xhttp.responseText);
+      var json = JSON.parse(xhttp.responseText);
+      console.log(json);
+      for (var i = 0; i < json.length; i++) {
+        console.log(json[i]);
+        createRoom(json[i].roomName, json[i].items);
+      }
+    }
+  };
+  xhttp.send();
 }
 
 function createItem() {
@@ -18,11 +38,29 @@ function createItem() {
 
 function sendToServer(room) {
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "/rooms", true);
+  xhttp.open("POST", "/mainPage", true);
   xhttp.send(JSON.stringify(room));
 }
 
-function createRoom(roomName) {
+function createList(stuff) {
+  var ul = document.createElement('ul');
+  for (var i = 0; i < stuff.length; i++) {
+    var li = document.createElement('li');
+    var link = document.createElement('a');
+    link.innerHTML = stuff[i].name  + " (" + stuff[i].qty.toString() + ')';
+    link.classList.add('ignore-css');
+    link.style.textDecoration = "underline";
+    link.style.color = "green";
+    link.style.cursor = "pointer";
+    link.href = "www.google.com";
+    li.appendChild(link);
+    ul.appendChild(li);
+  }
+  return ul;
+}
+
+function createRoom(roomName, items) {
+
   var isEditable = roomName == null;
 
   var fieldset = document.createElement('fieldset');
@@ -48,6 +86,12 @@ function createRoom(roomName) {
 
   var createEverything = function() {
     var newRoom = new Room(legendIn.value, null, []);
+    if (roomName == null) {
+      rooms.push(legendIn.value);
+    }
+    else {
+      rooms.push(roomName);
+    }
     sendToServer(newRoom);
     var nameh3 = document.createElement('h3');
     legendHeader.innerHTML = legendIn.value;
@@ -57,15 +101,21 @@ function createRoom(roomName) {
 
   createBut.onclick = createEverything;
 
-  if (!isEditable) {
-    createEverything();
-  }
-
   legend.appendChild(legendHeader);
   legend.appendChild(legendIn);
   fieldset.appendChild(legend);
+
+  if (items != null) {
+    var newList = createList(items);
+    fieldset.appendChild(newList);
+  }
+
   fieldset.appendChild(googleMap);
   fieldset.appendChild(createBut);
   parent.appendChild(br);
   parent.appendChild(fieldset);
+
+  if (!isEditable) {
+    createEverything();
+  }
 }
