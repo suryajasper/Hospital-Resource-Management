@@ -83,7 +83,6 @@ function createRoom(roomName, items) {
   var map = new google.maps.Map(googleMap, {zoom: 4, center: uluru});
   // The marker, positioned at Uluru
   var marker = new google.maps.Marker({position: uluru, map: map});
-  var drawingManager = new google.maps.drawin.DrawingManager({map: map});
 
   var createBut = createButton("Add Room");
 
@@ -99,6 +98,7 @@ function createRoom(roomName, items) {
     var nameh3 = document.createElement('h3');
     legendHeader.innerHTML = legendIn.value;
     legendIn.remove();
+    googleMap.remove();
     createBut.remove();
   }
 
