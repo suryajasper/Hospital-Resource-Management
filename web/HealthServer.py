@@ -36,7 +36,6 @@ def login():
 def signup():
    if request.method == 'POST':
       ilist = [request.form['pass'], request.form['gender'], request.form['age'], request.form['role'], request.form['access']]
-      print(ilist)
       usr_db.add_user(request.form['user'], ilist)
       return (redirect(url_for('login')))
    else:
@@ -52,14 +51,13 @@ def items():
 @app.route('/mainPage', methods=['POST', 'GET'])
 def mainPage():
    if request.method == 'POST':
-      print("primary post");
-      print(request.get_json(force=True))
       usr_db.add_room(request.get_json(force=True))
    return render_template(INDEX)
 
 @app.route('/rooms', methods=['GET'])
 def getRooms():
    usr_db.getRooms()
+   print(usr_db.getRooms())
    return(jsonify(usr_db.getRooms()))
 
 if __name__ == '__main__':

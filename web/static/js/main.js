@@ -12,7 +12,7 @@ function createButton(text) {
 
 function getFromServer() {
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "/mainPage", true);
+  xhttp.open("GET", "/rooms", true);
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState>3 && xhttp.status==200) {
@@ -62,7 +62,7 @@ function createList(stuff) {
 
 function createRoom(roomName, items) {
 
-  var isEditable = roomName == null;
+  var isEditable = roomName == null && items == null;
 
   var fieldset = document.createElement('fieldset');
   var legend = document.createElement('legend');
@@ -87,14 +87,18 @@ function createRoom(roomName, items) {
   var createBut = createButton("Add Room");
 
   var createEverything = function() {
-    var newRoom = new Room(legendIn.value, "3, 3, 3", []);
-    if (roomName == null) {
+    if (roomName == null && items == null) {
       rooms.push(legendIn.value);
     }
     else {
+      roomName = roomName.split('.')[0];
+      legendIn.value = roomName;
       rooms.push(roomName);
     }
-    sendToServer(newRoom);
+    var newRoom = new Room(legendIn.value, "3, 3, 3", []);
+    if (roomName == null && items == null) {
+      sendToServer(newRoom);
+    }
     var nameh3 = document.createElement('h3');
     legendHeader.innerHTML = legendIn.value;
     legendIn.remove();

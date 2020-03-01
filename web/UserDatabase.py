@@ -1,6 +1,7 @@
 import json
 import os.path
 from os import path
+import os
 
 class UserDatabase:
 	def __init__(self):
@@ -29,19 +30,25 @@ class UserDatabase:
 
 	def getRooms(self):
 		jso = []
-		for file in os.listdir("/"):
+		for file in os.listdir("."):
 			if file.endswith(".db"):
 				if not file.startswith("usrdata"):
 					f = open(file, 'r')
 					data = f.readlines()
 					f.close()
-					curr = {gps: data[0]}
+					print(file, data)
+					curr = {"roomName": str(file), "gps": data[0]}
 					items = []
 					for i in data[1:]:
 						items.append(makeItemJson(i))
 					curr['items'] = items
 					jso.append(curr)
 		return(jso)
+
+	def makeItemJson(item):
+		#name type room qnty
+		i = item.split()
+		return {"name": i[0], "type": i[1], "room": i[2], "qty": i[3]}
 
 	def add_room(self, jso):
 		print('adding a room')
