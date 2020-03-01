@@ -13,7 +13,7 @@ function createItem() {
   for (var i = 0; i < rooms.length; i++) {
     roomRaw += rooms[i] + "+";
   }
-  window.location = '../template/createItem.html?rooms='+roomRaw;
+  window.location = '../templates/createItem.html?rooms='+roomRaw;
 }
 
 function sendToServer(room) {

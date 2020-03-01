@@ -77,7 +77,7 @@ function addDrugToScreen(drug) {
   buttonToCreate.innerHTML = "Add";
   buttonToCreate.onclick = function() {
     sendToServer(drug.generic_name);
-    window.location = "../template/mainPage.html";
+    window.location = "../templates/mainPage.html";
   }
 
   var br1 = document.createElement('br');
