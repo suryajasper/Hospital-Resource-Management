@@ -40,12 +40,12 @@ class UserDatabase:
 					curr = {"roomName": str(file), "gps": data[0]}
 					items = []
 					for i in data[1:]:
-						items.append(makeItemJson(i))
+						items.append(self.makeItemJson(i))
 					curr['items'] = items
 					jso.append(curr)
 		return(jso)
 
-	def makeItemJson(item):
+	def makeItemJson(self, item):
 		#name type room qnty
 		i = item.split()
 		return {"name": i[0], "type": i[1], "room": i[2], "qty": i[3]}
@@ -66,10 +66,12 @@ class UserDatabase:
 		return True
 
 	def createItem(self, jso):
+		print("jso", jso)
 		f = open(jso["room"] + '.db', 'a')
 		strng = ""
 		for i in jso:
-			strng += i[j] + ' '
-		strng += s + '\n'
+			strng += jso[i] + ' '
+		strng += '\n'
+		print(strng)
 		f.write(strng)
 		f.close()

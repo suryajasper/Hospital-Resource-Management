@@ -1,15 +1,22 @@
 var select = document.getElementById('rooms');
 var itemSelect = document.getElementById('type');
 var qty = document.getElementById('qty');
+console.log(qty);
 
 var parent = document.getElementById('parent');
 parent.classList.add('ignore-css');
 
 function sendToServer(item) {
-  var newItem = new Item(item, parseInt(qty.value), itemSelect.value, select.value);
+  console.log(" sending an item");
+  console.log("QTY " + qty.value);
+  console.log("itemSelect " + itemSelect.value);
+  console.log("select " + select.value);
+  var newItem = new Item(item, qty.value, itemSelect.value, select.value);
+  console.log(JSON.stringify(newItem));
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "/createItem", true);
   xhttp.send(JSON.stringify(newItem));
+  window.location = "/mainPage"
 }
 
 async function getDrugInfo(drugName) {
@@ -77,7 +84,6 @@ function addDrugToScreen(drug) {
   buttonToCreate.innerHTML = "Add";
   buttonToCreate.onclick = function() {
     sendToServer(drug.generic_name);
-    window.location = "../templates/mainPage.html";
   }
 
   var br1 = document.createElement('br');

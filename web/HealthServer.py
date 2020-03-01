@@ -44,7 +44,8 @@ def signup():
 @app.route('/createItem', methods=['POST', 'GET'])
 def items():
    if request.method == 'POST':
-      usr_db.createItem(request.json)
+      usr_db.createItem(request.get_json(force=True))
+      return (redirect(url_for('mainPage')))
    else:
       return render_template(CREATEITEM)
 
